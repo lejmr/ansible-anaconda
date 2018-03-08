@@ -42,7 +42,7 @@
       file:
         path: /tmp/{{anaconda_installer_sh}}
         state: absent
-    
+
 - name: link anaconda...
   become: yes
   become_user: root
@@ -85,4 +85,3 @@
   register: conda_install_result
   changed_when: not (conda_install_result.stdout | search('All requested packages already installed'))
   with_items: "{{anaconda_install_packages}}"
-  when: not anaconda_install_packages_allin
